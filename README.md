@@ -1,49 +1,84 @@
-# 🌸 Bluebell SDK
+# Bluebell 🌸
 
-**Elegant architecture for Kotlin Multiplatform. Inspired by nature. Engineered for scale.**
-
-Named after the delicate *Hyacinthoides non-scripta*, **Bluebell** is a modular SDK and project template for Kotlin Multiplatform applications. It’s designed to help teams build secure, scalable, and maintainable apps across platforms—without the overhead of boilerplate or brittle wiring.
-
----
-
-## 🧬 Purpose
-
-Bluebell abstracts the complexity of cross-platform development into a clean, composable architecture. It offers:
-
-- **Security-first design**
-- **Modular feature components**
-- **Unidirectional UI state management**
-- **Dependency wiring abstraction**
-- **Common task orchestration**:
-  - Downloads
-  - Camera vision
-  - Storage
-  - UI components
-
-Whether you're building for Android, iOS, desktop, or web, Bluebell provides a consistent foundation that lets teams focus on features—not infrastructure.
+*A Kotlin Multiplatform SDK and project template inspired by the bluebell flower  
+(*Hyacinthoides non-scripta*) — elegant, minimal, and built to grow where it’s planted.*
 
 ---
 
-## 🏗️ Structure
+## Overview
 
-### Public Presence
+**Bluebell** is an SDK and template for **Kotlin Multiplatform Mobile (KMM)** projects.  
+It provides a modular, opinionated foundation for building cross-platform apps with strict data flow rules, consistent architecture, and optional components you can selectively adopt.
 
-- Documentation hub  
-- Web showcase  
-- CI/CD pipelines for open modules and templates
+The project is split into two repositories:
 
-### Private Customer Repo
-
-- Tailored SDK builds  
-- Enterprise modules  
-- Secure integrations
+- **Public Repository**: Documentation, website, and CI/CD workflows.  
+- **Private Repository**: Core SDK code, distributed as an asset to customers.  
 
 ---
 
-## 🌐 Philosophy
+## Goals
 
-Just as the *non-scripta* bluebell thrives in shaded woodlands, Bluebell is designed to flourish quietly beneath your app’s surface—powerful, unobtrusive, and elegant. It’s not just a toolkit; it’s a way to build software that feels natural.
+- **Minimal by Design**: Use only what you need, no heavy dependencies.  
+- **Strict Data Flow**: Predictable state and unidirectional flow across layers.  
+- **Composable Features**: Self-sustained and consistent module layout.  
+- **Cross-Platform First**: Shared logic with platform-specific integrations where required.  
 
 ---
 
-> _“Simplicity is the ultimate sophistication.”_ — Leonardo da Vinci
+## Architecture
+
+Bluebell enforces **clear boundaries** across architectural layers with predictable, unidirectional data flow.  
+
+The **Redux store** can be configured as:  
+- A **single global application state**, or  
+- **Flux-like stores per feature**, each with their own dispatcher that can subscribe to actions from other features.  
+
+---
+
+### Unified Architecture Diagram
+
+```mermaid
+flowchart TD
+    %% Application Layer
+    subgraph App["Application Layer"]
+        Services["Background Services"]
+    end
+
+    %% Data Layer
+    subgraph Data["Data Layer"]
+        Remote["Remote Client"]
+        Local["Local Client"]
+    end
+
+    %% Repository Layer
+    subgraph Repo["Repository Layer"]
+        RepoStore["Repositories"]
+        Mapping["Mapping / DTO ↔ Domain"]
+    end
+
+    %% Domain Layer
+    subgraph Domain["Domain Layer"]
+        UseCases["Use Cases"]
+    end
+
+    %% UI Layer
+    subgraph UI["UI Layer"]
+        Actions["Actions"]
+        Reducer["Reducers"]
+        Redux["Redux Store\n(single or per-feature)"]
+        UIState["UI State"]
+        Compose["Compose UI"]
+    end
+
+    %% Data flow (downward)
+    Remote --> RepoStore
+    Local --> RepoStore
+    RepoStore --> Mapping --> UseCases --> Actions
+    Actions --> Reducer --> Redux --> UIState --> Compose
+
+    %% Feedback loops
+    Compose -->|User Actions| Actions
+    Redux -->|Effects| Data
+    Services --> Data
+```
