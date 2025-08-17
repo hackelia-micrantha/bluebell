@@ -66,7 +66,7 @@ flowchart TD
     subgraph UI["UI Layer"]
         Actions["Actions"]
         Reducer["Reducers"]
-        Redux["Redux Store\n(single or per-feature)"]
+        Redux["Redux Store (single or per-feature)"]
         UIState["UI State"]
         Compose["Compose UI"]
     end
