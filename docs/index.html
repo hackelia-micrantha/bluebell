@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bluebell SDK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f4f6ef;
+        --ink: #172013;
+        --muted: #405338;
+        --panel: #fcfdf9;
+        --line: #cbdbc1;
+        --accent: #2f7f57;
+        --accent-2: #dbf5de;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 0%, #e6f8e4 0, transparent 34%),
+          radial-gradient(circle at 85% 20%, #edfbe9 0, transparent 28%),
+          var(--bg);
+        line-height: 1.5;
+      }
+
+      .wrap {
+        width: min(960px, 92vw);
+        margin: 2.5rem auto 4rem;
+      }
+
+      .hero {
+        background: linear-gradient(140deg, var(--panel), #f6fcef);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 2rem;
+        box-shadow: 0 24px 60px -45px rgba(19, 41, 24, 0.5);
+      }
+
+      .kicker {
+        display: inline-block;
+        font: 600 0.8rem/1 "IBM Plex Mono", monospace;
+        letter-spacing: 0.06em;
+        color: var(--accent);
+        text-transform: uppercase;
+        margin-bottom: 0.6rem;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.15;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(1.9rem, 4vw, 3rem);
+        margin-bottom: 0.8rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.7rem;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .lead {
+        color: var(--muted);
+        max-width: 68ch;
+      }
+
+      .grid {
+        margin-top: 1.2rem;
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 1rem 1.1rem;
+      }
+
+      .charter {
+        background: linear-gradient(155deg, #eef9f0, #e4f3e7);
+        border: 1px solid #b7d8bf;
+        color: #1c3a28;
+        box-shadow: 0 24px 55px -46px rgba(22, 58, 33, 0.35);
+      }
+
+      .charter h2 {
+        color: #28563d;
+        font-size: 1.45rem;
+        margin-bottom: 0.35rem;
+        letter-spacing: 0.01em;
+      }
+
+      .charter-meta {
+        display: inline-block;
+        margin-bottom: 0.65rem;
+        padding: 0.2rem 0.55rem;
+        border-radius: 999px;
+        border: 1px solid #9bc8a8;
+        color: #2f6345;
+        background: rgba(239, 250, 241, 0.85);
+        font: 600 0.72rem/1 "IBM Plex Mono", monospace;
+        letter-spacing: 0.04em;
+      }
+
+      .charter ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .charter li {
+        padding: 0.5rem 0 0.5rem 1rem;
+        border-left: 3px solid #5e9f78;
+        font-weight: 600;
+      }
+
+      .charter li + li {
+        margin-top: 0.2rem;
+      }
+
+      .cols {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 1rem;
+      }
+
+      li + li {
+        margin-top: 0.35rem;
+      }
+
+      code {
+        font-family: "IBM Plex Mono", monospace;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-top: 0.9rem;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 0.22rem 0.58rem;
+        border-radius: 999px;
+        background: var(--accent-2);
+        border: 1px solid var(--line);
+        color: #225639;
+        font: 600 0.74rem/1 "IBM Plex Mono", monospace;
+        letter-spacing: 0.03em;
+      }
+
+      .flow-svg {
+        width: 100%;
+        height: auto;
+        margin-top: 0.7rem;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        background: #f6fbf4;
+        padding: 0.45rem;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="hero">
+        <span class="kicker">Bluebell SDK</span>
+        <h1>Kotlin Multiplatform foundation for scalable app teams</h1>
+        <p class="lead">
+          Bluebell is an opinionated SDK for teams that want consistency
+          without friction: lightweight configuration, architecture plumbing
+          that stays out of your way, Compose UI-oriented development across
+          platforms, and extension points ready for AI-powered workflows.
+        </p>
+        <div class="tags" aria-label="Core themes">
+          <span class="tag">AI</span>
+          <span class="tag">Security</span>
+          <span class="tag">Architecture</span>
+          <span class="tag">Configuration</span>
+          <span class="tag">Declarative UI</span>
+        </div>
+      </section>
+
+      <section class="grid" aria-label="Project charter">
+        <article class="card charter">
+          <h2>Project Charter</h2>
+          <span class="charter-meta">Charter v1.0 · Effective March 4, 2026</span>
+          <ul>
+            <li>Configuration is plugin + files + environment, by convention first.</li>
+            <li>Architecture and design patterns are standardized, not optional.</li>
+            <li>UI stays Compose-first across shared and platform targets.</li>
+            <li>Data pipelines must be reliable from domain to presentation.</li>
+            <li>Security defaults are mandatory, including store attestation leverage.</li>
+            <li>Observability and structured logging are required by default.</li>
+            <li>Extension points must support AI-enabled capabilities over time.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="grid cols" aria-label="Flow model">
+        <article class="card">
+          <h2>UI State Flow</h2>
+          <p class="lead">
+            Unidirectional immutable loop for state:
+          </p>
+          <svg
+            class="flow-svg"
+            viewBox="0 0 560 430"
+            role="img"
+            aria-label="UI state flow loop diagram"
+          >
+            <defs>
+              <marker id="arrow-ui" markerWidth="7" markerHeight="5" refX="6.2" refY="2.5" orient="auto">
+                <polygon points="0 0, 7 2.5, 0 5" fill="#2f7f57"></polygon>
+              </marker>
+            </defs>
+            <rect x="180" y="20" width="200" height="52" rx="10" fill="#e8f7ea" stroke="#7fb492"></rect>
+            <rect x="180" y="100" width="200" height="52" rx="10" fill="#e8f7ea" stroke="#7fb492"></rect>
+            <rect x="180" y="180" width="200" height="52" rx="10" fill="#e8f7ea" stroke="#7fb492"></rect>
+            <rect x="180" y="260" width="200" height="52" rx="10" fill="#e8f7ea" stroke="#7fb492"></rect>
+
+            <text x="280" y="52" text-anchor="middle" font-size="15" font-family="IBM Plex Mono" fill="#1f3527">Actions</text>
+            <text x="280" y="132" text-anchor="middle" font-size="15" font-family="IBM Plex Mono" fill="#1f3527">Reducer</text>
+            <text x="280" y="212" text-anchor="middle" font-size="15" font-family="IBM Plex Mono" fill="#1f3527">Store</text>
+            <text x="280" y="292" text-anchor="middle" font-size="15" font-family="IBM Plex Mono" fill="#1f3527">UI</text>
+
+            <line x1="280" y1="72" x2="280" y2="100" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-ui)"></line>
+            <line x1="280" y1="152" x2="280" y2="180" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-ui)"></line>
+            <line x1="280" y1="232" x2="280" y2="260" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-ui)"></line>
+
+            <path d="M180 286 H146 V46 H180" fill="none" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-ui)"></path>
+          </svg>
+        </article>
+
+        <article class="card">
+          <h2>External Data Flow</h2>
+          <p class="lead">
+            Bi-directional immutable path for externals to the app:
+          </p>
+          <svg
+            class="flow-svg"
+            viewBox="0 0 560 430"
+            role="img"
+            aria-label="External data flow bidirectional path diagram"
+          >
+            <defs>
+              <marker id="arrow-data" markerWidth="7" markerHeight="5" refX="6.2" refY="2.5" orient="auto">
+                <polygon points="0 0, 7 2.5, 0 5" fill="#2f7f57"></polygon>
+              </marker>
+            </defs>
+            <rect x="90" y="20" width="380" height="52" rx="10" fill="#e8f7ea" stroke="#7fb492"></rect>
+            <rect x="130" y="100" width="300" height="52" rx="10" fill="#e8f7ea" stroke="#7fb492"></rect>
+            <rect x="130" y="180" width="300" height="52" rx="10" fill="#e8f7ea" stroke="#7fb492"></rect>
+            <rect x="130" y="260" width="300" height="52" rx="10" fill="#e8f7ea" stroke="#7fb492"></rect>
+            <rect x="175" y="340" width="210" height="52" rx="10" fill="#e8f7ea" stroke="#7fb492"></rect>
+
+            <text x="280" y="52" text-anchor="middle" font-size="15" font-family="IBM Plex Mono" fill="#1f3527">device / api / database / cache</text>
+            <text x="280" y="132" text-anchor="middle" font-size="15" font-family="IBM Plex Mono" fill="#1f3527">data source</text>
+            <text x="280" y="212" text-anchor="middle" font-size="15" font-family="IBM Plex Mono" fill="#1f3527">repository</text>
+            <text x="280" y="292" text-anchor="middle" font-size="15" font-family="IBM Plex Mono" fill="#1f3527">use cases</text>
+            <text x="280" y="372" text-anchor="middle" font-size="15" font-family="IBM Plex Mono" fill="#1f3527">user</text>
+
+            <line x1="260" y1="72" x2="260" y2="100" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-data)"></line>
+            <line x1="300" y1="100" x2="300" y2="72" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-data)"></line>
+
+            <line x1="260" y1="152" x2="260" y2="180" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-data)"></line>
+            <line x1="300" y1="180" x2="300" y2="152" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-data)"></line>
+
+            <line x1="260" y1="232" x2="260" y2="260" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-data)"></line>
+            <line x1="300" y1="260" x2="300" y2="232" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-data)"></line>
+
+            <line x1="260" y1="312" x2="260" y2="340" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-data)"></line>
+            <line x1="300" y1="340" x2="300" y2="312" stroke="#2f7f57" stroke-width="2.6" marker-end="url(#arrow-data)"></line>
+          </svg>
+        </article>
+      </section>
+
+      <section class="grid cols" aria-label="Project goals">
+        <article class="card">
+          <h2>Unobtrusive Configuration Plugin</h2>
+          <ul>
+            <li>Use convention-based defaults through the build plugin first.</li>
+            <li>Layer configuration files and environment values cleanly.</li>
+            <li>Keep project bootstrap fast and predictable.</li>
+            <li>Support local overrides without rewriting core behavior.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Architecture & Design Patterns</h2>
+          <ul>
+            <li>Provide clean boundaries between app layers.</li>
+            <li>Keep UI patterns Compose-first across shared and platform code.</li>
+            <li>Build reliable data pipelines from domain to presentation.</li>
+            <li>Offer reusable building blocks instead of hard lock-in.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Extensible, AI-Enabled Core</h2>
+          <ul>
+            <li>Expose extension seams for new features and integrations.</li>
+            <li>Enable AI-assisted workflows on top of shared architecture.</li>
+            <li>Design for evolving capabilities without framework churn.</li>
+          </ul>
+        </article>
+      </section>
+
+    </main>
+  </body>
+</html>
