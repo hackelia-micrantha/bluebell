@@ -78,9 +78,41 @@
         margin: 0;
       }
 
+      a {
+        color: #1e6844;
+        font-weight: 700;
+      }
+
       .lead {
         color: var(--muted);
         max-width: 68ch;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        margin-top: 1.2rem;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 2.45rem;
+        padding: 0.55rem 0.9rem;
+        border: 1px solid #91bf9e;
+        border-radius: 999px;
+        background: #eaf8ed;
+        color: #1f4f34;
+        font: 700 0.82rem/1 "IBM Plex Mono", monospace;
+        text-decoration: none;
+      }
+
+      .button.primary {
+        background: #2f7f57;
+        border-color: #2f7f57;
+        color: #ffffff;
       }
 
       .grid {
@@ -195,13 +227,35 @@
           that stays out of your way, Compose UI-oriented development across
           platforms, and extension points ready for AI-powered workflows.
         </p>
-        <div class="tags" aria-label="Core themes">
-          <span class="tag">AI</span>
-          <span class="tag">Security</span>
-          <span class="tag">Architecture</span>
-          <span class="tag">Configuration</span>
-          <span class="tag">Declarative UI</span>
+        <div class="actions" aria-label="Project links">
+          <a class="button primary" href="https://github.com/hackelia-micrantha/bluebell">View Bluebell on GitHub</a>
+          <a class="button" href="https://github.com/ryjen/eyespie">Open Eyespie demo app</a>
         </div>
+        <div class="tags" aria-label="Core themes">
+          <span class="tag">Kotlin Multiplatform</span>
+          <span class="tag">Compose UI</span>
+          <span class="tag">Flux-style state</span>
+          <span class="tag">Configuration plugin</span>
+          <span class="tag">AI-ready</span>
+        </div>
+      </section>
+
+      <section class="grid" aria-label="Demo app">
+        <article class="card charter">
+          <h2>Reference Demo: Eyespie</h2>
+          <span class="charter-meta">KMP app · Android + iOS · AI-assisted gameplay</span>
+          <p class="lead">
+            Eyespie is the first public demo app using Bluebell. It is a Kotlin
+            Multiplatform "I spy" game that uses shared Compose UI, camera and
+            location capabilities, Supabase-backed services, and MediaPipe-based
+            vision / GenAI hooks to explore offline-capable, AI-assisted mobile
+            application patterns.
+          </p>
+          <div class="actions" aria-label="Demo links">
+            <a class="button primary" href="https://github.com/ryjen/eyespie">View demo source</a>
+            <a class="button" href="https://github.com/ryjen/eyespie#readme">Read demo overview</a>
+          </div>
+        </article>
       </section>
 
       <section class="grid" aria-label="Project charter">
@@ -304,7 +358,7 @@
           <ul>
             <li>Use convention-based defaults through the build plugin first.</li>
             <li>Layer configuration files and environment values cleanly.</li>
-            <li>Keep project bootstrap fast and predictable.</li>
+            <li>Generate typed runtime configuration for application code.</li>
             <li>Support local overrides without rewriting core behavior.</li>
           </ul>
         </article>
@@ -323,7 +377,7 @@
           <h2>Extensible, AI-Enabled Core</h2>
           <ul>
             <li>Expose extension seams for new features and integrations.</li>
-            <li>Enable AI-assisted workflows on top of shared architecture.</li>
+            <li>Support vision and GenAI integrations in app modules.</li>
             <li>Design for evolving capabilities without framework churn.</li>
           </ul>
         </article>
